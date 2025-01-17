@@ -13,7 +13,12 @@ const port =process.env.PORT || 4000;
 
 //middlewares
 app.use(express.json());
-app.use(cors());
+const allowedOrigins = ["https://food-be-frontend.vercel.app"];
+app.use(cors({
+  origin: allowedOrigins,
+  methods: "GET,POST,PUT,DELETE",
+  credentials: true,
+}));
 
 // DB connection
 connectDB();
